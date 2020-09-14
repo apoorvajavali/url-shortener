@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_package = "com.proto.shortenurl";
+option java_multiple_files = true;
+
+message ShortenURLRequest {
+  string full_url = 1;
+}
+
+message ShortenURLResponse {
+  string short_url = 1;
+}
+
+message GetFullURLRequest {
+  string hashed_id = 1;
+}
+
+message GetFullURLResponse {
+  string full_url = 1;
+}
+
+service ShortenURLService {
+  //Unary
+  rpc ShortenURL(ShortenURLRequest) returns (ShortenURLResponse) {};
+  rpc GetFullURL(GetFullURLRequest) returns (GetFullURLResponse) {};
+}
